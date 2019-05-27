@@ -12,8 +12,14 @@ func CreateUser(u *model.User) error {
 	return errors.WithStack(infra.DB().Create(u).Error)
 }
 
-func GetUserByID(id string) (*model.UserCore, error) {
+func GetUserByID(id string) (*model.User, error) {
 	var u model.User
 	err := infra.DB().Where("id = ?", id).First(&u).Error
-	return &u.UserCore, errors.WithStack(err)
+	return &u, errors.WithStack(err)
+}
+
+func GetUserByEmail(email string) (*model.User, error) {
+	var u model.User
+	err := infra.DB().Where("email = ?", email).First(&u).Error
+	return &u, errors.WithStack(err)
 }
