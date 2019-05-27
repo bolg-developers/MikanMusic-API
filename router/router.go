@@ -23,11 +23,11 @@ func init() {
 	v1 := r.Group("/v1")
 	{
 		v1.POST("/signup", ctl.SignUp)
+		v1.POST("/signin", ctl.SignIn)
 
 		v1.GET("/users/:id", ctl.GetUserByID)
 
 		v1.POST("/icons", ctl.CreateIcon)
-
 	}
 	router = r
 }
