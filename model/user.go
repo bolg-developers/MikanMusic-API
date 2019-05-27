@@ -8,7 +8,6 @@ type User struct {
 	Password  string     `json:"password" binding:"required,min=8,max=255"`
 	CreatedAt *time.Time `json:"createdAt"`
 	UpdatedAt *time.Time `json:"updatedAt"`
-	LogoutAt  *time.Time `json:"logoutAt"`
 }
 
 type UserCore struct {

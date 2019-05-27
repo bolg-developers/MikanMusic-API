@@ -27,8 +27,6 @@ func SignUp(c *gin.Context) {
 	}
 	u.Password = hash
 
-	u.LogoutAt = nil
-
 	if err := svc.CreateUser(u); err != nil {
 		c.Status(http.StatusInternalServerError)
 		log.Printf("InternalServerError: %+v", err)
