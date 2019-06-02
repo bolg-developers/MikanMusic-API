@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS mikna_music.users;
+DROP TABLE IF EXISTS users;
