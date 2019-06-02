@@ -12,6 +12,13 @@ func CreateMusic(m *model.Music) error {
 	return errors.WithStack(infra.DB().Create(m).Error)
 }
 
+// musicとgenreをjoinにして返す
+func GetAllMusics() (model.Musics, error) {
+	ret := make(model.Musics, 0)
+	err := errors.WithStack(infra.DB().Find(&ret).Error)
+	return ret, err
+}
+
 func DeleteMusic(id string) error {
 	return errors.WithStack(infra.DB().Delete(model.Music{}, "id = ?", id).Error)
 }

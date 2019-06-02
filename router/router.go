@@ -32,6 +32,7 @@ func init() {
 		v1.POST("/audios", ctl.CreateAudio)
 
 		v1.POST("/musics", ctl.CreateMusic)
+		v1.GET("/musics", ctl.GetAllMusics)
 
 		v1.GET("/genres", ctl.GetAllGenres)
 	}
