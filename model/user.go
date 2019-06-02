@@ -13,6 +13,6 @@ type User struct {
 type UserCore struct {
 	ID           string `json:"id"`
 	DisplayName  string `json:"displayName" binding:"required,max=32"`
-	IconURL      string `json:"iconURL" binding:"required,max=255,url"`
+	IconURL      string `json:"iconURL" binding:"omitempty,max=255,url"`
 	Introduction string `json:"introduction" binding:"max=255"`
 }

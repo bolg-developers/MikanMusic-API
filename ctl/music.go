@@ -28,6 +28,10 @@ func CreateMusic(c *gin.Context) {
 		return
 	}
 
+	if mr.ArtworkURL == "" {
+		mr.ArtworkURL = model.IconDefaultURL
+	}
+
 	if err := svc.CreateMusic(&mr.Music); err != nil {
 		c.Status(500)
 		log.Printf("InternalServerError: %+v", err)
