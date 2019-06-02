@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS mikan_music.users (
+CREATE TABLE IF NOT EXISTS users (
         id CHAR(36) NOT NULL PRIMARY KEY,
         display_name CHAR(32) NOT NULL UNIQUE,
         icon_url CHAR(255) NOT NULL,

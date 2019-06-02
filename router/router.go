@@ -27,7 +27,11 @@ func init() {
 
 		v1.GET("/users/:id", ctl.GetUserByID)
 
+		// ファイルアップロード系エンドポイント
 		v1.POST("/icons", ctl.CreateIcon)
+		v1.POST("/audios", ctl.CreateAudio)
+
+		v1.POST("/musics", ctl.CreateMusic)
 	}
 	router = r
 }
