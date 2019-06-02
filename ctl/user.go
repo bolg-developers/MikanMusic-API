@@ -19,6 +19,10 @@ func SignUp(c *gin.Context) {
 		return
 	}
 
+	if u.IconURL == "" {
+		u.IconURL = model.IconDefaultURL
+	}
+
 	hash, err := svc.HashPassword(u.Password)
 	if err != nil {
 		c.Status(http.StatusInternalServerError)
