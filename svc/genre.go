@@ -24,7 +24,7 @@ func ValidateGenres(genres model.Genres) error {
 	for _, g := range genres {
 		var exists bool
 		for _, one := range all {
-			if one == g {
+			if one.ID == g.ID {
 				exists = true
 				break
 			}
