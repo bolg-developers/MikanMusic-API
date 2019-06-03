@@ -12,6 +12,22 @@ func CreateMusic(m *model.Music) error {
 	return errors.WithStack(infra.DB().Create(m).Error)
 }
 
+func GetAllMusics() (model.Musics, error) {
+	ret := make(model.Musics, 0)
+	err := errors.WithStack(infra.DB().Find(&ret).Error)
+	return ret, err
+}
+
+func GetMusicByID(id string) (*model.Music, error) {
+	var ret model.Music
+	err := errors.WithStack(infra.DB().Where("id = ?", id).First(&ret).Error)
+	return &ret, err
+}
+
+func UpdateMusic(m *model.Music) error {
+	return errors.WithStack(infra.DB().Save(m).Error)
+}
+
 func DeleteMusic(id string) error {
 	return errors.WithStack(infra.DB().Delete(model.Music{}, "id = ?", id).Error)
 }

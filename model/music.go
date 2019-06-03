@@ -18,3 +18,5 @@ type Music struct {
 	CreatedAt   time.Time `json:"createdAt"`
 	UpdatedAt   time.Time `json:"updatedAt"`
 }
+
+type Musics []*Music
