@@ -1,12 +1,11 @@
 package ctl
 
 import (
-	"log"
-
 	"github.com/bolg-developers/MikanMusic-API/model"
 	"github.com/bolg-developers/MikanMusic-API/svc"
 	"github.com/gin-gonic/gin"
 	"github.com/pkg/errors"
+	"log"
 )
 
 func CreateMusic(c *gin.Context) {
@@ -81,4 +80,29 @@ func GetAllMusics(c *gin.Context) {
 		})
 	}
 	c.JSON(200, gin.H{"musics": mgList})
+}
+
+func IncrementMusicCntListen(c *gin.Context) {
+	id := c.Param("id")
+	if id == "" {
+		c.Status(404)
+		return
+	}
+
+	m, err := svc.GetMusicByID(id)
+	if err != nil {
+		c.Status(400)
+		log.Printf("BadRequest: %+v", err)
+		return
+	}
+
+	m.CountListen++
+
+	if err := svc.UpdateMusic(m); err != nil {
+		c.Status(500)
+		log.Printf("InternalServerError: %+v", err)
+		return
+	}
+
+	c.Status(200)
 }
