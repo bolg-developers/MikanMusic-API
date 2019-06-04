@@ -26,6 +26,7 @@ func init() {
 		v1.POST("/signin", ctl.SignIn)
 
 		v1.GET("/users/:id", ctl.GetUserByID)
+		v1.GET("/users", ctl.GetAllUsers)
 
 		// ファイルアップロード系エンドポイント
 		v1.POST("/icons", ctl.CreateIcon)

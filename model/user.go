@@ -10,6 +10,8 @@ type User struct {
 	UpdatedAt *time.Time `json:"updatedAt"`
 }
 
+type Users []*User
+
 type UserCore struct {
 	ID           string `json:"id"`
 	DisplayName  string `json:"displayName" binding:"required,max=32"`

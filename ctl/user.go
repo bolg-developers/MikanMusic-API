@@ -82,6 +82,16 @@ func SignIn(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"token": token})
 }
 
+func GetAllUsers(c *gin.Context) {
+	users, err := svc.GetAllUsers()
+	if err != nil {
+		c.Status(500)
+		log.Printf("InternalServerError: %+v", err)
+		return
+	}
+	c.JSON(200, gin.H{"users": users})
+}
+
 func GetUserByID(c *gin.Context) {
 	id := c.Param("id")
 	if id == "" {

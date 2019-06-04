@@ -12,6 +12,12 @@ func CreateUser(u *model.User) error {
 	return errors.WithStack(infra.DB().Create(u).Error)
 }
 
+func GetAllUsers() (model.Users, error) {
+	users := make(model.Users, 0)
+	err := errors.WithStack(infra.DB().Find(&users).Error)
+	return users, err
+}
+
 func GetUserByID(id string) (*model.User, error) {
 	var u model.User
 	err := infra.DB().Where("id = ?", id).First(&u).Error
