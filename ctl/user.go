@@ -89,7 +89,11 @@ func GetAllUsers(c *gin.Context) {
 		log.Printf("InternalServerError: %+v", err)
 		return
 	}
-	c.JSON(200, gin.H{"users": users})
+	userCores := make([]*model.UserCore, 0, len(users))
+	for _, u := range users {
+		userCores = append(userCores, &u.UserCore)
+	}
+	c.JSON(200, gin.H{"users": userCores})
 }
 
 func GetUserByID(c *gin.Context) {
