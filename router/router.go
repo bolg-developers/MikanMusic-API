@@ -5,15 +5,13 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-var router *gin.Engine
+var r = gin.Default()
 
 func Router() *gin.Engine {
-	return router
+	return r
 }
 
 func init() {
-	r := gin.Default()
-
 	r.GET("/alive", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "🍊",
@@ -38,5 +36,4 @@ func init() {
 
 		v1.GET("/genres", ctl.GetAllGenres)
 	}
-	router = r
 }
