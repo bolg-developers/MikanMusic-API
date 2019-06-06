@@ -15,7 +15,10 @@ func DB() *gorm.DB {
 }
 
 func init() {
-	db, err := gorm.Open(config.Env().DB[:5], config.Env().DB[8:])
+	db, err := gorm.Open("mysql",
+		config.Env().DBUser+":"+config.Env().DBPassword+
+			"@tcp("+config.Env().DBAddress+":"+config.Env().DBPort+")/"+
+			config.Env().DBName+"?charset=utf8mb4&parseTime=True&loc=Local")
 	if err != nil {
 		panic(err)
 	}

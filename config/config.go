@@ -3,7 +3,11 @@ package config
 import "github.com/kelseyhightower/envconfig"
 
 type environment struct {
-	DB                string `required:"true"`
+	DBUser            string `required:"true"`
+	DBPassword        string `required:"true"`
+	DBAddress         string `required:"true"`
+	DBPort            string `required:"true"`
+	DBName            string `required:"true"`
 	S3AccessKeyID     string `required:"true"`
 	S3SecretAccessKey string `required:"true"`
 	S3Bucket          string `required:"true"`
